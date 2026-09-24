@@ -8,8 +8,9 @@ interface ExerciseCardProps {
 
 const ExerciseCard = ({ libaray }: ExerciseCardProps) => {
   return (
-    <Link href={`/exercises/${libaray.id}`} className="block">
+    <Link href={`/apps/${libaray.id}`} className="block">
       <article className="group w-full overflow-hidden rounded-2xl bg-[#15171c] shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-[#3a3e47] hover:shadow-2xl">
+        {/* Image */}
         <div className="relative h-36 w-full overflow-hidden bg-[#202228]">
           <Image
             src={libaray.image}
@@ -22,7 +23,9 @@ const ExerciseCard = ({ libaray }: ExerciseCardProps) => {
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
         </div>
 
+        {/* Content */}
         <div className="px-4 pb-4 pt-3">
+          {/* Muscle Groups */}
           <div className="mb-2 flex flex-wrap gap-1.5">
             {libaray.muscleGroups.map((muscle) => (
               <span
@@ -34,17 +37,21 @@ const ExerciseCard = ({ libaray }: ExerciseCardProps) => {
             ))}
           </div>
 
+          {/* Name */}
           <h2 className="truncate text-[15px] font-extrabold uppercase tracking-wide text-white">
             {libaray.name}
           </h2>
 
+          {/* Equipment */}
           <p className="mt-1 truncate text-[10px] font-medium text-[#777b85]">
             {libaray.equipment}
           </p>
 
           <div className="my-3 h-px bg-[#25282e]" />
 
+          {/* Bottom Info */}
           <div className="flex items-center justify-between text-[10px] text-[#a0a3aa]">
+            {/* Duration */}
             <div className="flex items-center gap-1.5">
               <svg
                 width="12"
@@ -61,6 +68,7 @@ const ExerciseCard = ({ libaray }: ExerciseCardProps) => {
               <span>{libaray.duration} min</span>
             </div>
 
+            {/* Calories */}
             <div className="flex items-center gap-1.5">
               <svg
                 width="12"
@@ -75,6 +83,7 @@ const ExerciseCard = ({ libaray }: ExerciseCardProps) => {
               <span>{libaray.caloriesBurned} kcal</span>
             </div>
 
+            {/* Rating */}
             <div className="flex items-center gap-1.5">
               <svg
                 width="12"
