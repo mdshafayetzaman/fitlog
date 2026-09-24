@@ -3,8 +3,8 @@ import logo from '@/app/assets/banner.png'
 
 export default function Banner() {
   return (
-    <section className="border-b border-[var(--border)] bg-[#0d0f12]">
-      <div className="container mx-auto px-5 py-8">
+    <section className=" bg-[#0d0f12]">
+      <div className="container mx-auto max-w-6xl px-5 py-8">
         <div className="flex min-h-[340px] items-center justify-between overflow-hidden rounded-xl border border-[#292d35] bg-[#15181d] px-9 py-8 sm:px-10 lg:px-14">
           {/* Content */}
           <div className="flex max-w-xl flex-col items-start">
