@@ -1,81 +1,113 @@
-import React from 'react';
 
-const Navbar = () => {
+'use client'
+
+import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { useState } from 'react'
+import logo from '@/app/assets/logo.png'
+
+const NAV_LINKS = [
+  { href: '/#library', label: 'Workout', match: '/' },
+  { href: '/my-plan', label: 'My Plan', match: '/my-plan' },
+]
+
+export default function Navbar() {
+  const pathname = usePathname()
+  const [open, setOpen] = useState(false)
+
   return (
-    <div className="navbar bg-base-100 shadow-sm">
-      <div className="navbar-start">
-        <div className="dropdown">
-          <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-            <svg
-              aria-label="Menu"
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              {' '}
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h8m-8 6h16"
-              />{' '}
-            </svg>
-          </div>
-          <ul
-            tabIndex={-1}
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <a>Parent</a>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
-        </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
-      </div>
-      <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">
-          <li>
-            <a>Item 1</a>
-          </li>
-          <li>
-            <details>
-              <summary>Parent</summary>
-              <ul className="p-2 bg-base-100 w-40 z-1">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
-          <li>
-            <a>Item 3</a>
-          </li>
-        </ul>
-      </div>
-      <div className="navbar-end">
-        <a className="btn">Button</a>
-      </div>
-    </div>
-  )
-};
+    <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0d0d0f] text-white">
+      <div className="mx-auto flex h-[72px] max-w-7xl items-center justify-between px-5">
 
-export default Navbar;
+        {/* Logo */}
+        <Link href="/" className="flex shrink-0 items-center gap-2">
+          <Image
+            src={logo}
+            alt="FitLog logo"
+            width={28}
+            height={28}
+          />
+
+          <span className="text-xl font-semibold tracking-wide">
+            FITLOG
+          </span>
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
+          {NAV_LINKS.map((link) => {
+            const active = pathname === link.match
+
+            return (
+              <Link
+                key={link.label}
+                href={link.href}
+                className={`text-sm uppercase tracking-wider ${
+                  active
+                    ? 'text-[#c8ff00]'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
+          })}
+        </nav>
+
+        {/* Right Side */}
+        <div className="flex items-center gap-3">
+
+          {/* Plan */}
+          <div className="hidden items-center gap-2 md:flex">
+            <span className="text-xs text-gray-400">
+              Plan
+            </span>
+
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#c8ff00] px-1 text-[10px] font-bold text-black">
+              0
+            </span>
+          </div>
+
+          {/* Saved */}
+          <div className="hidden items-center gap-2 md:flex">
+            <span className="text-xs text-gray-400">
+              Saved
+            </span>
+
+            <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-white/10 px-1 text-[10px] text-gray-400">
+              0
+            </span>
+          </div>
+
+          {/* Mobile 3 Dot */}
+          <div className="relative md:hidden">
+            <button
+              onClick={() => setOpen(!open)}
+              className="text-2xl text-white"
+            >
+              ⋮
+            </button>
+
+            {open && (
+              <div className="absolute right-0 top-9 z-50 w-32 rounded-lg border border-white/10 bg-[#161619] p-2">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.label}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    className="block rounded-md px-3 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
+
+        </div>
+      </div>
+    </header>
+  )
+}
+
