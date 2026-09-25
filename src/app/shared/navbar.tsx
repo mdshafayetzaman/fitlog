@@ -1,11 +1,11 @@
-
 'use client'
 
 import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import logo from '@/app/assets/logo.png'
+import { PlanContext } from '@/Context/PlanContext'
 
 const NAV_LINKS = [
   { href: '/#library', label: 'Workout', match: '/' },
@@ -16,22 +16,16 @@ export default function Navbar() {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
+  const { plan, saved } = useContext(PlanContext)
+
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-[#0d0d0f] text-white">
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between px-5">
-
         {/* Logo */}
         <Link href="/" className="flex shrink-0 items-center gap-2">
-          <Image
-            src={logo}
-            alt="FitLog logo"
-            width={28}
-            height={28}
-          />
+          <Image src={logo} alt="FitLog logo" width={28} height={28} />
 
-          <span className="text-xl font-semibold tracking-wide">
-            FITLOG
-          </span>
+          <span className="text-xl font-semibold tracking-wide">FITLOG</span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -44,9 +38,7 @@ export default function Navbar() {
                 key={link.label}
                 href={link.href}
                 className={`text-sm uppercase tracking-wider ${
-                  active
-                    ? 'text-[#c8ff00]'
-                    : 'text-gray-400 hover:text-white'
+                  active ? 'text-[#c8ff00]' : 'text-gray-400 hover:text-white'
                 }`}
               >
                 {link.label}
@@ -57,33 +49,29 @@ export default function Navbar() {
 
         {/* Right Side */}
         <div className="flex items-center gap-3">
-
           {/* Plan */}
           <div className="hidden items-center gap-2 md:flex">
-            <span className="text-xs text-gray-400">
-              Plan
-            </span>
+            <span className="text-xs text-gray-400">Plan</span>
 
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#c8ff00] px-1 text-[10px] font-bold text-black">
-              0
+              {plan.length}
             </span>
           </div>
 
           {/* Saved */}
           <div className="hidden items-center gap-2 md:flex">
-            <span className="text-xs text-gray-400">
-              Saved
-            </span>
+            <span className="text-xs text-gray-400">Saved</span>
 
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full border border-white/10 px-1 text-[10px] text-gray-400">
-              0
+              {saved.length}
             </span>
           </div>
 
-          {/* Mobile 3 Dot */}
+          {/* Mobile Menu */}
           <div className="relative md:hidden">
             <button
               onClick={() => setOpen(!open)}
+              type="button"
               className="text-2xl text-white"
             >
               ⋮
@@ -104,10 +92,8 @@ export default function Navbar() {
               </div>
             )}
           </div>
-
         </div>
       </div>
     </header>
   )
 }
-

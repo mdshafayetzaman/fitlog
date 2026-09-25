@@ -1,9 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowLeft, Bookmark, CalendarPlus, Star } from 'lucide-react'
+import { ArrowLeft, Star } from 'lucide-react'
 
+import SavedButton from '@/app/components/Apps/SavedButton'
 import { getLibrary } from '@/app/lib/api'
 import { IType } from '@/app/lib/types'
+import AddToCartButton from '@/app/components/Apps/AddToCartButton'
 
 type TPlanDetails = {
   params: Promise<{
@@ -184,21 +186,9 @@ const PlanDetails = async ({ params }: TPlanDetails) => {
 
               {/* BUTTONS */}
               <div className="mt-5 flex flex-col gap-2.5 sm:flex-row">
-                <button
-                  type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg bg-[#baff00] px-4 py-2.5 text-[11px] font-bold text-black transition hover:bg-[#a9eb00]"
-                >
-                  <CalendarPlus size={13} />
-                  Add to today's plan
-                </button>
+                <AddToCartButton exercise={plan} />
 
-                <button
-                  type="button"
-                  className="flex items-center justify-center gap-2 rounded-lg border border-[#343942] bg-transparent px-4 py-2.5 text-[11px] font-medium text-[#d1d4d9] transition hover:bg-[#191c21]"
-                >
-                  <Bookmark size={13} />
-                  Save for later
-                </button>
+                <SavedButton exercise={plan} />
               </div>
             </div>
           </div>
