@@ -63,4 +63,4 @@ const SavedButton = ({ exercise }: { exercise: IType }) => {
   )
 }
 
-export default SavedButton
+export default SavedButton;
