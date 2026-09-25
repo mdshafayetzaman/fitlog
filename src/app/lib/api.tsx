@@ -1,4 +1,3 @@
-
 const BASE_URL = 'http://localhost:3000'
 
 export const getLibrary = async () => {
@@ -11,7 +10,5 @@ export const getLibrary = async () => {
   }
 
   const data = await response.json()
-
   return data
 }
-

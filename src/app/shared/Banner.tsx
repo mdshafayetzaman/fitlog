@@ -1,9 +1,10 @@
 import Image from 'next/image'
+
 import bannerImage from '../apps/assets/banner.png'
 
 export default function Banner() {
   return (
-    <section className=" bg-[#0d0f12]">
+    <section className="bg-[#0d0f12]">
       <div className="container mx-auto max-w-6xl px-5 py-8">
         <div className="flex min-h-[340px] items-center justify-between overflow-hidden rounded-xl border border-[#292d35] bg-[#15181d] px-9 py-8 sm:px-10 lg:px-14">
           {/* Content */}
@@ -38,6 +39,7 @@ export default function Banner() {
               alt="Illustration of an athlete using a resistance machine"
               fill
               priority
+              sizes="280px"
               className="object-contain"
             />
           </div>
