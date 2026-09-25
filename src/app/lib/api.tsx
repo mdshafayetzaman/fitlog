@@ -1,5 +1,10 @@
+
+const BASE_URL = 'http://localhost:3000'
+
 export const getLibrary = async () => {
-  const response = await fetch('http://localhost:3000/data.json')
+  const response = await fetch(`${BASE_URL}/data.json`, {
+    cache: 'no-store',
+  })
 
   if (!response.ok) {
     throw new Error('Failed to fetch data')
@@ -7,5 +12,6 @@ export const getLibrary = async () => {
 
   const data = await response.json()
 
-  return data;
+  return data
 }
+
