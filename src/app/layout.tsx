@@ -6,6 +6,7 @@ import './globals.css'
 import PlanProvider from '@/Context/PlanContext'
 import Footer from './shared/footer'
 import Navbar from './shared/navbar'
+import { ToastContainer } from 'react-toastify'
 
 export const metadata: Metadata = {
   title: 'FITLOG',
@@ -21,16 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <PlanProvider>
-
           <Navbar />
 
-          <main>
-            {children}
-          </main>
+          <main>{children}</main>
 
           <Footer />
-
         </PlanProvider>
+        <ToastContainer />
       </body>
     </html>
   )

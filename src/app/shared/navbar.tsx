@@ -47,11 +47,12 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Side */}
         <div className="flex items-center gap-3">
           {/* Plan */}
           <div className="hidden items-center gap-2 md:flex">
-            <span className="text-xs text-gray-400">Plan</span>
+            <Link href="/plan" className="text-xs text-gray-400">
+              Plan
+            </Link>
 
             <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-[#c8ff00] px-1 text-[10px] font-bold text-black">
               {plan.length}
