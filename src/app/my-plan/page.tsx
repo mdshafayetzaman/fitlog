@@ -28,12 +28,12 @@ const PlanStats = () => {
         return a.duration - b.duration
       }
 
-      if (sortBy === 'Name') {
-        return a.name.localeCompare(b.name)
+      if (sortBy === 'Calories') {
+        return b.caloriesBurned - a.caloriesBurned
       }
 
-      if (sortBy === 'Calories') {
-        return a.caloriesBurned - b.caloriesBurned
+      if (sortBy === 'Rating') {
+        return (b.rating ?? 0) - (a.rating ?? 0)
       }
 
       return 0
@@ -46,32 +46,32 @@ const PlanStats = () => {
         return a.duration - b.duration
       }
 
-      if (sortBy === 'Name') {
-        return a.name.localeCompare(b.name)
+      if (sortBy === 'Calories') {
+        return b.caloriesBurned - a.caloriesBurned
       }
 
-      if (sortBy === 'Calories') {
-        return a.caloriesBurned - b.caloriesBurned
+      if (sortBy === 'Rating') {
+        return (b.rating ?? 0) - (a.rating ?? 0)
       }
 
       return 0
     })
   }, [saved, sortBy])
 
-  const handleRemoveSaved = (id: string | number) => {
-    setSaved((previous) => previous.filter((item) => item.id !== id))
+  const handleRemovePlan = (id: string | number) => {
+    setPlan((previous) => previous.filter((item) => item.id !== id))
 
-    toast.success('Removed from saved!', {
+    toast.success("Removed from today's plan!", {
       position: 'top-right',
       autoClose: 1800,
       theme: 'dark',
     })
   }
 
-  const handleRemovePlan = (id: string | number) => {
-    setPlan((previous) => previous.filter((item) => item.id !== id))
+  const handleRemoveSaved = (id: string | number) => {
+    setSaved((previous) => previous.filter((item) => item.id !== id))
 
-    toast.success("Removed from today's plan!", {
+    toast.success('Removed from saved!', {
       position: 'top-right',
       autoClose: 1800,
       theme: 'dark',
@@ -131,9 +131,7 @@ const PlanStats = () => {
           <button
             onClick={() => setTab('plan')}
             className={`tab h-8 min-h-8 text-xs ${
-              tab === 'plan'
-                ? 'bg-[#20252d] text-white'
-                : 'text-[#858b96]'
+              tab === 'plan' ? 'bg-[#20252d] text-white' : 'text-[#858b96]'
             }`}
           >
             Today's Plan
@@ -142,9 +140,7 @@ const PlanStats = () => {
           <button
             onClick={() => setTab('saved')}
             className={`tab h-8 min-h-8 text-xs ${
-              tab === 'saved'
-                ? 'bg-[#20252d] text-white'
-                : 'text-[#858b96]'
+              tab === 'saved' ? 'bg-[#20252d] text-white' : 'text-[#858b96]'
             }`}
           >
             Saved
@@ -160,8 +156,8 @@ const PlanStats = () => {
             className="select select-sm w-[115px] border-[#252b34] bg-[#15181d] text-xs text-white"
           >
             <option>Duration</option>
-            <option>Name</option>
             <option>Calories</option>
+            <option>Rating</option>
           </select>
         </div>
       </div>
@@ -211,9 +207,7 @@ const PlanStats = () => {
                   {exercise.name}
                 </h3>
 
-                <p className="mt-1 text-[11px] text-[#858a94]">
-                  Medicine Ball
-                </p>
+                <p className="mt-1 text-[11px] text-[#858a94]">Medicine Ball</p>
 
                 <div className="mt-2 flex flex-wrap items-center gap-3 text-[10px] text-[#c6c9cf]">
                   <span className="flex items-center gap-1">
@@ -228,7 +222,7 @@ const PlanStats = () => {
 
                   <span className="flex items-center gap-1">
                     <span className="text-[#c8ff00]">★</span>
-                    4.1
+                    {exercise.rating ?? 0}
                   </span>
                 </div>
               </div>
@@ -241,23 +235,17 @@ const PlanStats = () => {
                   View Details
                 </button>
 
-                {tab === 'plan' ? (
-                  <button
-                    type="button"
-                    onClick={() => handleRemovePlan(exercise.id)}
-                    className="rounded-full bg-[#c8ff00] px-5 py-2 text-[10px] font-bold text-black transition hover:bg-[#b8ef00]"
-                  >
-                    ✓ Mark as Done
-                  </button>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveSaved(exercise.id)}
-                    className="rounded-full border border-red-500/30 px-4 py-2 text-[10px] font-bold text-red-400 transition hover:bg-red-500/10"
-                  >
-                    Remove
-                  </button>
-                )}
+                <button
+                  type="button"
+                  onClick={() =>
+                    tab === 'plan'
+                      ? handleRemovePlan(exercise.id)
+                      : handleRemoveSaved(exercise.id)
+                  }
+                  className="rounded-full border border-red-500/30 px-5 py-2 text-[10px] font-bold text-red-400 transition hover:bg-red-500/10"
+                >
+                  Remove
+                </button>
               </div>
 
               <button
@@ -267,7 +255,7 @@ const PlanStats = () => {
                     ? handleRemovePlan(exercise.id)
                     : handleRemoveSaved(exercise.id)
                 }
-                className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full text-[#747a84] transition hover:bg-[#252a31] hover:text-white sm:static sm:hidden"
+                className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full text-[#747a84] transition hover:bg-[#252a31] hover:text-white sm:hidden"
               >
                 <X size={14} />
               </button>
