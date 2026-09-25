@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import logo from '@/app/assets/banner.png'
+import bannerImage from '../apps/assets/banner.png'
 
 export default function Banner() {
   return (
@@ -34,7 +34,7 @@ export default function Banner() {
           {/* Image */}
           <div className="relative hidden h-[280px] w-[280px] shrink-0 sm:block">
             <Image
-              src={logo}
+              src={bannerImage}
               alt="Illustration of an athlete using a resistance machine"
               fill
               priority

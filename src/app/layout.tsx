@@ -1,12 +1,11 @@
-
 import type { Metadata } from 'next'
 import './globals.css'
 
-
-import PlanProvider from '@/Context/PlanContext'
 import Footer from './shared/footer'
 import Navbar from './shared/navbar'
+
 import { ToastContainer } from 'react-toastify'
+import PlanProvider from '../Context/PlanContext'
 
 export const metadata: Metadata = {
   title: 'FITLOG',
@@ -33,4 +32,3 @@ export default function RootLayout({
     </html>
   )
 }
-

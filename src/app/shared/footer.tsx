@@ -1,34 +1,34 @@
-
-'use client'
-
 import Image from 'next/image'
-import logo from '@/app/assets/logo.png'
+import logo from '../apps/assets/logo.png'
 
 export default function Footer() {
   return (
-    <footer className="mt-16  ">
-      <div className="container mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center justify-between gap-5 sm:flex-row">
-          <div className="flex items-center gap-2.5">
+    <footer className="">
+      <div className="container max-w-6xl mx-auto px-5 py-8">
+        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+          <div className="flex items-center gap-3">
             <Image
               src={logo}
-              alt="FitLog logo"
-              width={28}
-              height={28}
-              className="object-contain"
+              alt="Fitlog Logo"
+              width={40}
+              height={40}
+              className="rounded-full"
             />
 
-            <span className="font-display text-lg font-bold tracking-wider text-[var(--text)]">
-              FITLOG
-            </span>
+            <div>
+              <h2 className="text-lg font-bold">Fitlog</h2>
+
+              <p className="text-sm text-gray-400">
+                Your fitness journey starts here.
+              </p>
+            </div>
           </div>
 
-          <p className="text-center text-xs text-[var(--text-muted)] sm:text-right sm:text-sm">
-            © 2026 FitLog — Workout Library. Train hard, log honest.
+          <p className="text-sm text-gray-400">
+            © 2026 Fitlog. All rights reserved.
           </p>
         </div>
       </div>
     </footer>
   )
 }
-

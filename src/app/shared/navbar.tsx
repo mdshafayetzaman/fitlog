@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useContext, useState } from 'react'
-import logo from '@/app/assets/logo.png'
+import logo from '@/app/apps/assets/logo.png'
 import { PlanContext } from '@/Context/PlanContext'
 
 const NAV_LINKS = [

@@ -1,10 +1,10 @@
 'use client'
 
-import { PlanContext } from '@/Context/PlanContext'
-import { IType } from '@/app/lib/types'
 import { Bookmark, BookmarkCheck } from 'lucide-react'
 import React, { useContext } from 'react'
 import { toast } from 'react-toastify'
+import { IType } from '../../lib/types'
+import { PlanContext } from '@/Context/PlanContext'
 
 const SavedButton = ({ exercise }: { exercise: IType }) => {
   const { saved, setSaved } = useContext(PlanContext)
