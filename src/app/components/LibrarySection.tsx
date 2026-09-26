@@ -1,7 +1,7 @@
 
 import React from 'react'
 import { getLibrary } from '../lib/api'
-import ExerciseCard from '../apps/LibraryCard'
+import ExerciseCard from '../shared/LibraryCard'
 import { IType } from '../lib/types'
 
 const LibrarySection = async () => {
