@@ -1,11 +1,12 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowLeft, Star } from 'lucide-react'
-
-import SavedButton from '@/app/components/Apps/SavedButton'
 import { getLibrary } from '@/app/lib/api'
 import { IType } from '@/app/lib/types'
 import AddToCartButton from '@/app/components/Apps/AddToCartButton'
+import SavedButton from '@/app/components/Apps/SavedButton'
+
+
 
 type TPlanDetails = {
   params: Promise<{
@@ -46,7 +47,7 @@ const PlanDetails = async ({ params }: TPlanDetails) => {
           Back to Home
         </Link>
 
-
+        {/* MAIN CARD */}
         <div className="rounded-xl border border-[#20242b] bg-[#101216] p-3 sm:p-5">
           <div className="grid grid-cols-1 items-start gap-5 lg:grid-cols-2 lg:gap-6">
             {/* LEFT IMAGE */}

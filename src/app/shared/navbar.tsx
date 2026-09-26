@@ -7,6 +7,7 @@ import { useContext, useState } from 'react'
 import logo from '@/app/apps/assets/logo.png'
 import { PlanContext } from '@/Context/PlanContext'
 
+
 const NAV_LINKS = [
   { href: '/#library', label: 'Workout', match: '/' },
   { href: '/my-plan', label: 'My Plan', match: '/my-plan' },
