@@ -1,11 +1,12 @@
+import fs from 'fs'
+import path from 'path'
+
 export const getLibrary = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/data.json`)
+  const filePath = path.join(process.cwd(), 'public', 'data.json')
 
-  if (!response.ok) {
-    throw new Error('Failed to fetch data')
-  }
+  const jsonData = fs.readFileSync(filePath, 'utf-8')
 
-  const data = await response.json()
+  const data = JSON.parse(jsonData)
 
   return data
 }
