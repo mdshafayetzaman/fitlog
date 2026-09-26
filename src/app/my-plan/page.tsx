@@ -134,7 +134,7 @@ const PlanStats = () => {
               tab === 'plan' ? 'bg-[#20252d] text-white' : 'text-[#858b96]'
             }`}
           >
-            Today's Plan
+            Today&apos;s Plan
           </button>
 
           <button
@@ -153,7 +153,7 @@ const PlanStats = () => {
           <select
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
-            className="select select-sm w-[115px] border-[#252b34] bg-[#15181d] text-xs text-white"
+            className="select select-sm w-28.75 border-[#252b34] bg-[#15181d] text-xs text-white"
           >
             <option>Duration</option>
             <option>Calories</option>

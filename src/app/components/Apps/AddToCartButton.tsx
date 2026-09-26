@@ -39,12 +39,12 @@ const AddToCartButton = ({ exercise }: { exercise: IType }) => {
       {alreadyAdded ? (
         <>
           <CalendarCheck size={13} />
-          Added to today's plan
+          Added to today&apos;s plan
         </>
       ) : (
         <>
           <CalendarPlus size={13} />
-          Add to today's plan
+          Add to today&apos;s plan
         </>
       )}
     </button>

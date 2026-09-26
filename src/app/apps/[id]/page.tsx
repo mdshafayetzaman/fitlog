@@ -6,8 +6,6 @@ import { IType } from '@/app/lib/types'
 import AddToCartButton from '@/app/components/Apps/AddToCartButton'
 import SavedButton from '@/app/components/Apps/SavedButton'
 
-
-
 type TPlanDetails = {
   params: Promise<{
     id: string
@@ -174,7 +172,7 @@ const PlanDetails = async ({ params }: TPlanDetails) => {
                         key={index}
                         className="flex gap-2.5 text-[11px] leading-4 text-[#9a9ea7]"
                       >
-                        <span className="min-w-[14px] text-[#d2d5da]">
+                        <span className="min-w-3.5 text-[#d2d5da]">
                           {index + 1}.
                         </span>
 
